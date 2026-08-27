@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Empire Building — Acquire. Grow. Scale.</title>
+  <meta name="description" content="Tools, templates, and data for buying, selling, and scaling small businesses. Build your acquisition empire." />
+  <link rel="icon" href="data:,">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#ffd166;
+      --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --radius:12px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#061226 0%, #071226 40%, #071018 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      color:#071226;
+      box-shadow:0 6px 18px rgba(6,18,36,0.5);
+    }
+    nav{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:15px;
+    }
+    nav a.cta{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#081027;
+      font-weight:600;
+      box-shadow:0 8px 20px rgba(10,12,20,0.4);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:stretch;
+      margin-bottom:36px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .hero-left h1{
+      margin:0 0 12px 0;
+      font-size:2.0rem;
+      letter-spacing:-0.6px;
+    }
+    .lead{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      padding:12px 18px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#071226;
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Stats / features */
+    .stats{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+    }
+    .stat{
+      background:var(--glass);
+      border-radius:10px;
+      padding:10px 12px;
+      text-align:center;
+      min-width:90px;
+    }
+    .stat .num{font-weight:700; font-size:1.05rem;}
+    .stat .lbl{font-size:12px;color:var(--muted)}
+
+    /* Right column: search / finder */
+    .finder h3{margin:0 0 10px 0}
+    .finder form{display:flex;flex-direction:column;gap:12px}
+    .field{
+      display:flex;
+      gap:8px;
+      background:rgba(255,255,255,0.02);
+      border-radius:10px;
+      padding:10px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .field input, .field select {
+      background:transparent;
+      border:0;
+      outline:none;
+      color:inherit;
+      width:100%;
+      font-size:15px;
+    }
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Grid features */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .feature{
+      padding:14px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .feature h4{margin:0 0 8px 0}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Pricing / how it works */
+    .how{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:36px;
+      color:var(--muted);
+      font-size:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; }
+      .features{grid-template-columns:repeat(2,1fr)}
+      .how{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      body{padding:18px}
+      nav{display:none}
+      header{align-items:flex-start; gap:6px}
+      .features{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">EB</div>
+        <div>
+          <div style="font-weight:700">Empire Building</div>
+          <div style="font-size:12px;color:var(--muted)">Acquire. Grow. Scale.</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a class="cta" href="#get-started">Get Started</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card hero-left">
+          <h1>Build your acquisition empire — tools & data to buy, scale, and exit</h1>
+          <p class="lead">Templates, lead lists, valuation frameworks, and operational playbooks to find, evaluate, and scale profitable small businesses.</p>
+
+          <div class="cta-row">
+            <button class="btn btn-primary" onclick="scrollToElement('#get-started')">Start your search</button>
+            <button class="btn btn-ghost" onclick="scrollToElement('#features')">Explore features</button>
+          </div>
+
+          <div class="stats" role="list" aria-label="Key stats">
+            <div class="stat" role="listitem">
+              <div class="num">1,200+</div>
+              <div class="lbl">Businesses indexed</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="num">100+</div>
+              <div class="lbl">Deal templates</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="num">89%</div>
+              <div class="lbl">Average margin uplift</div>
+            </div>
+          </div>
+
+          <div class="how" id="how">
+            <div class="card" style="margin-top:18px">
+              <h3 style="margin-top:0">How it works</h3>
+              <ol style="margin:8px 0 0 18px;color:var(--muted)">
+                <li>Find targets using the finder & data filters</li>
+                <li>Evaluate with valuation models & due diligence checklists</li>
+                <li>Execute with acquisition playbooks and ops templates</li>
+              </ol>
+            </div>
+            <div class="card" style="margin-top:18px">
+              <h3 style="margin-top:0">Who it's for</h3>
+              <p class="small" style="margin:0">Acquirers, operators, consultants, and agencies seeking a repeatable process for acquiring and scaling service & product businesses.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card finder" aria-labelledby="finder-heading">
+          <h3 id="finder-heading">Deal Finder</h3>
+          <p class="small">Search available businesses and filter by revenue, margin, industry and location.</p>
+
+          <form id="finder-form" onsubmit="event.preventDefault(); runFinder()">
+            <div class="field">
+              <select id="industry" aria-label="Industry">
+                <option value="">All industries</option>
+                <option>eCommerce</option>
+                <option>SaaS</option>
+                <option>Local Services</option>
+                <option>Agencies</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <input id="min-rev" type="number" placeholder="Min revenue (USD)" min="0" />
+            </div>
+
+            <div class="field">
+              <input id="max-rev" type="number" placeholder="Max revenue (USD)" min="0" />
+            </div>
+
+            <div class="field">
+              <select id="sort">
+                <option value="score">Sort by relevance</option>
+                <option value="revenue">Sort by revenue</option>
+                <option value="margin">Sort by margin</option>
+              </select>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary" type="submit">Search</button>
+              <button class="btn btn-ghost" type="button" onclick="resetFinder()">Reset</button>
+            </div>
+          </form>
+
+          <div id="finder-results" style="margin-top:12px;color:var(--muted);font-size:14px">
+            <div class="small">No results yet. Run a search to see matches.</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <a href="#pricing" class="small" style="color:var(--muted)">Upgrade for full-contact data & export</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" style="margin-top:12px">
+        <div class="features">
+          <div class="feature card">
+            <h4>Data & Listings</h4>
+            <p>Curated listings, revenue histories, traffic signals, and owner contact details (for paid plans).</p>
+          </div>
+          <div class="feature card">
+            <h4>Valuation Tools</h4>
+            <p>Multiples, discounted cash flow helpers, and automated deal scorecards you can customize.</p>
+          </div>
+          <div class="feature card">
+            <h4>Due Diligence</h4>
+            <p>Checklist templates, document trackers, and red-flag scorers to speed evaluation.</p>
+          </div>
+          <div class="feature card">
+            <h4>Playbooks</h4>
+            <p>Integration guides, SOP templates, and growth experiments to scale post-acquisition.</p>
+          </div>
+          <div class="feature card">
+            <h4>Deal Docs</h4>
+            <p>LOIs, asset purchase templates, and escrow checklists you can export as PDF or DOCX.</p>
+          </div>
+          <div class="feature card">
+            <h4>Community</h4>
+            <p>Operator forums, deal syndication channels, and case studies from other acquirers.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" style="margin-top:24px">
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px 0">Free</h3>
+            <p class="small">Basic filters, sample templates, community access</p>
+            <div style="font-weight:700;font-size:18px;margin-top:12px">$0</div>
+            <div style="margin-top:12px"><button class="btn btn-ghost">Get started</button></div>
+          </div>
+          <div class="card" style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px 0">Pro</h3>
+            <p class="small">Full listings, export, valuation tools</p>
+            <div style="font-weight:700;font-size:18px;margin-top:12px">$49/mo</div>
+            <div style="margin-top:12px"><button class="btn btn-primary">Upgrade</button></div>
+          </div>
+          <div class="card" style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px 0">Agency</h3>
+            <p class="small">Team seats, APIs, dedicated data feeds</p>
+            <div style="font-weight:700;font-size:18px;margin-top:12px">Contact us</div>
+            <div style="margin-top:12px"><button class="btn btn-ghost">Contact sales</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="get-started" style="margin-top:28px">
+        <div class="card">
+          <h2 style="margin-top:0">Get started</h2>
+          <p class="small">Sign up to save searches, export contact lists, and access premium docs.</p>
+
+          <form id="signup" onsubmit="event.preventDefault(); signup()">
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <input id="name" placeholder="Your name" required style="flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+              <input id="email" type="email" placeholder="Email address" required style="flex:1;min-width:220px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+              <button class="btn btn-primary" type="submit">Create account</button>
+            </div>
+            <div id="signup-msg" class="small" style="margin-top:10px;color:var(--muted)"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Empire Building</div>
+      <div>
+        <a href="#" style="color:var(--muted);text-decoration:none;margin-right:12px">Privacy</a>
+        <a href="#" style="color:var(--muted);text-decoration:none">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactions
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function scrollToElement(selector){
+      const el = document.querySelector(selector);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function runFinder(){
+      const industry = document.getElementById('industry').value || 'any';
+      const min = document.getElementById('min-rev').value || '0';
+      const max = document.getElementById('max-rev').value || '∞';
+      const sort = document.getElementById('sort').value;
+      const results = document.getElementById('finder-results');
+
+      // Placeholder demo output. Replace with real API call.
+      results.innerHTML = '';
+      const card = document.createElement('div');
+      card.style.padding = '12px';
+      card.style.borderRadius = '8px';
+      card.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.01), transparent)';
+      card.innerHTML = '<strong>Demo result</strong><div class="small" style="margin-top:6px;color:var(--muted)">'+
+        'Industry: '+industry+' · Revenue: $' + min + ' — ' + max + ' · Sort: '+ sort +
+        '</div><div style="margin-top:8px"><button class="btn btn-ghost" onclick="alert(\\'Open sample deal details\\')">View deal</button></div>';
+      results.appendChild(card);
+    }
+
+    function resetFinder(){
+      document.getElementById('industry').value = '';
+      document.getElementById('min-rev').value = '';
+      document.getElementById('max-rev').value = '';
+      document.getElementById('sort').value = 'score';
+      document.getElementById('finder-results').innerHTML = '<div class="small">No results yet. Run a search to see matches.</div>';
+    }
+
+    function signup(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('signup-msg');
+      if(!name || !email){ msg.textContent = 'Please add name and email.'; return; }
+      // Demo: show a success message. Replace with real sign-up fetch().
+      msg.style.color = 'var(--accent)';
+      msg.textContent = 'Thanks, ' + name.split(' ')[0] + '! Check your email (' + email + ') for next steps.';
+      document.getElementById('signup').reset();
+    }
+  </script>
+</body>
+                </html>
